@@ -1,0 +1,18 @@
+{
+  "model": "fno3d",
+  "task": "superres",
+  "case": "ou_robust_tau1_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__superres__ou_robust_tau1_256_fp64/best.pt",
+  "nRMSE_mean": 0.18037454141121284,
+  "nRMSE_std": 0.01802608134330419,
+  "fRMSE_high_mean": 0.7643958271718493,
+  "enstrophy_ratio_mean": 0.6779932893958747,
+  "spectrum_L2_mean": 0.019681464095472122,
+  "freq_drift_mean": -0.11468772137281942,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1050.9327799479167,
+  "fRMSE_mid_mean": 47.97526655010149,
+  "vorticity_flatness_mean": 5.701312822454116,
+  "vorticity_tail_frac_mean": 0.015023584459342208
+}

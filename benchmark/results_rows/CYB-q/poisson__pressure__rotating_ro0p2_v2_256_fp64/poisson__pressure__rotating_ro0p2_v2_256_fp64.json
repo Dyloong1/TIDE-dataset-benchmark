@@ -1,0 +1,15 @@
+{
+  "model": "poisson",
+  "task": "pressure",
+  "case": "rotating_ro0p2_v2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 3.61908636183644e-07,
+  "nRMSE_std": 5.286870763186396e-08,
+  "fRMSE_high_mean": 0.001682530845488038,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 0.018802167071650427
+}

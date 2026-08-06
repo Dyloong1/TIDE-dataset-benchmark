@@ -1,0 +1,18 @@
+{
+  "model": "tfno",
+  "task": "superres",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\tfno__superres__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 0.27057328791010615,
+  "nRMSE_std": 0.010021909369799771,
+  "fRMSE_high_mean": 5.861735446780336,
+  "enstrophy_ratio_mean": 12.279604070326862,
+  "spectrum_L2_mean": 0.07206303443686635,
+  "freq_drift_mean": 1.0106376841956495,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1130.0574496400122,
+  "fRMSE_mid_mean": 647.3002427045037,
+  "vorticity_flatness_mean": 4.2743174235026045,
+  "vorticity_tail_frac_mean": 0.007321272410598456
+}

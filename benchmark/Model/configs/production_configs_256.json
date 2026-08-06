@@ -1,0 +1,151 @@
+{
+  "_meta": {
+    "purpose": "Production benchmark hyperparameters for the turbgen 256^3 corpus.",
+    "training_resolution": "TRAIN on 128^3 patches (256^3 full-field training OOMs a 32GB GPU -- activations, not params). EVAL runs the model on 128^3 TILES and stitches them back into the native 256^3 field (eval_benchmark.py::_TiledModel), so every baseline uses one identical forward protocol while the metrics still score a true 256^3 periodic box (a 128^3 sub-block of a periodic box is NOT periodic, so spectra/enstrophy/Poisson residuals computed on a tile would be wrong).",
+    "task_setup": "NS is Markovian -- u(t) is a complete state (pressure follows instantaneously from the Poisson equation, it carries no time derivative), so every task is a 1->1 pair with t_in=1. rollout trains single-step (t_out=1); eval unrolls that single-step model AUTOREGRESSIVELY for 20 steps (= 1.0 T_L at dt=0.05). The only genuine time design variable is the frame INTERVAL, not the input length.",
+    "comparability": "PARAMETER-COUNT matched (2026-07-14, supersedes the earlier VRAM-budget basis): the four architecturally-unconstrained baselines are pinned to ~28-30M (spread 1.08x) so the leaderboard measures METHOD, not size. Matched UPWARD -- shrinking strong models to the weakest architecture's ceiling was rejected. deeponet (8.8M) is the sole exception: its dense 128^3 trunk OOMs a 32GB GPU above ~9M, so it is reported honestly out-of-band rather than dragging the other four down to match it. On top of this, every model shares one recipe: same LR, same effective batch 16, same 25-epoch cosine, same --seed.",
+    "gpu": "RTX 5090 (32GB). All configs verified train+backward at 128^3, batch=1, peak < 25GB (headroom for AMP/larger batch).",
+    "verified": "2026-07-14, CYB-q, torch 2.7.0+cu128; all _params_M re-measured at the production shape (C=4, t_in=1).",
+    "note": "latent_diffusion is a TWO-STAGE model (train AE, then freeze AE + train latent DDPM) — it needs the two-stage flow, not a single train_benchmark run; its config is listed but flagged."
+  },
+  "training": {
+    "resolution": 128,
+    "_resolution_note": "TRAIN + VAL on 128^3 patches; TEST evals via 128^3 tiles stitched to native 256^3 (_TiledModel), identical for every baseline.",
+    "t_in": 1,
+    "t_out": 1,
+    "_t_out_note": "rollout trains single-step (t_out=1); eval AR-unrolls 20 steps (= 1.0 T_L at dt=0.05). A sample therefore needs t_in1+t_out20 = 21 frames.",
+    "effective_batch": 16,
+    "_effective_batch_note": "PROTOCOL (not optional): physical batch varies with VRAM per model, but effective batch = physical_batch * grad_accum_steps is ALIGNED to 16 for ALL models, to remove the batch-size confound from the leaderboard. Record (physical_batch, grad_accum) per model.",
+    "amp": true,
+    "_amp_note": "bf16 autocast. MAIN LINE: all five learned baselines train on 128^3 patches under one unified protocol (do NOT split into patch-vs-256-native — that breaks leaderboard comparability). bf16 additionally makes a native-256^3 run feasible for a few core NO; that is an OPTIONAL appendix ablation (single model, not on the leaderboard) to show patch training is spectrally unbiased.",
+    "_t_in_note": "NS is Markovian: u(t) is a complete state. t_in=20 was 19 frames of pure redundancy.",
+    "epochs": 25,
+    "_epochs_note": "CosineAnnealingLR(T_max=25) anneals fully within the budget; early stopping (patience 8 / min_delta 1e-4 / min_epochs 10) is a SAFETY NET, not the intended stop.",
+    "_sampling_note": "TRAIN: rollout frame_stride=4 (a training window is only 2 frames -- input + target), space tasks per_frame_n=20. Chosen by DATA VOLUME vs WALL-CLOCK, not by sample independence: independence between two TRAINING pairs is irrelevant (overlapping windows are ordinary augmentation; an error bar, which is what independence is for, exists only on the eval side). Measured pairs/config at stride 1/2/4/8 = 3576/1800/912/456 at ~497/250/127/63 s per epoch; stride=8 would be FEWER than the old stride=5 (720) -- a regression. stride=4 keeps 1.3x the old data at a quarter of the cost. EVAL: rollout frame_stride=8 (0.4 T_L), per_frame_n=20 -- same order as training. Sampling sparsely does NOT buy independence: measured N_eff is ~9 at EVERY stride from 2 to 64, because the independent information in a test set is set by (trajectory length x seeds), not by slicing granularity. An earlier stride=64 discarded 186 of 195 samples for the LOWEST N_eff (8.1). The residual correlation is reported honestly as N_eff ~9 alongside the measured 3.6 T_L decorrelation time, rather than pretending 51 samples are independent.",
+    "seed": 0,
+    "_seed_note": "ML seed: pins weight init + shuffle order. Distinct from the DNS/corpus seeds in the slice."
+  },
+  "models": {
+    "fno3d": {
+      "FNO_WIDTH": 32,
+      "FNO_MODES_Z": 12,
+      "FNO_MODES_H": 12,
+      "FNO_MODES_W": 12,
+      "FNO_LAYERS": 4,
+      "_params_M": 28.3,
+      "_peak_GB": 5.0,
+      "_phys_batch": 2,
+      "_capacity_note": "Capacity band: the four architecturally-unconstrained baselines are matched at ~28-30M so the leaderboard measures METHOD, not size (was 16.8-33.6M = 2.0x spread). Matched UPWARD -- shrinking strong models to fit the weakest was rejected. All values measured at the production rollout shape (C=4, t_in=1) through _hp_args->build_config->get_model. DeepONet is deliberately NOT in this band: see its own _note. fno3d: width 28->32 (21.7->28.3M). _phys_batch 4->2 because w32 OOMs at batch 4 (measured); effective_batch stays 16 via accum=8, so results are unchanged, only speed.",
+      "GRAD_CKPT": true,
+      "_v2_note": "GRAD_CKPT on for native-256 training: Phase A 2026-07-16 measured 29.0GB without (too tight on 32GB with optimizer+loader) vs 20.7GB with (+13% step time, 799ms)."
+    },
+    "ufno": {
+      "UFNO_WIDTH": 22,
+      "FNO_MODES_Z": 12,
+      "FNO_MODES_H": 12,
+      "FNO_MODES_W": 12,
+      "FNO_LAYERS": 4,
+      "_params_M": 28.2,
+      "_peak_GB": 6.8,
+      "_phys_batch": 1,
+      "_phys_batch_note": "explicit (was absent -> silently defaulted to 1). effective_batch stays 16 via accum so results are identical to any phys_batch; raising it only speeds things up and needs a measured width-24 peak first.",
+      "_capacity_note": "Capacity band: the four architecturally-unconstrained baselines are matched at ~28-30M so the leaderboard measures METHOD, not size (was 16.8-33.6M = 2.0x spread). Matched UPWARD -- shrinking strong models to fit the weakest was rejected. All values measured at the production rollout shape (C=4, t_in=1) through _hp_args->build_config->get_model. DeepONet is deliberately NOT in this band: see its own _note. ufno: UFNO_WIDTH 24->22 (33.6->28.2M). Measured 5.9GB.",
+      "_train_patch": 128,
+      "_v2_note": "Trains at 128^3 crops (native-256 backward OOMs 32GB even with per-block ckpt: full-res skip tensors persist for the decoder). Evals native (fwd-only 16.2GB); the resolution transfer is validated in Phase B smoke, not assumed."
+    },
+    "tfno": {
+      "FNO_WIDTH": 40,
+      "FNO_MODES_Z": 18,
+      "FNO_MODES_H": 18,
+      "FNO_MODES_W": 18,
+      "FNO_LAYERS": 4,
+      "TFNO_RANK": 18,
+      "_params_M": 30.27,
+      "_peak_GB_native256_fwd": 19.2,
+      "_note": "low-rank (tucker): params ~16.8M are INDEPENDENT of width (width sets activation memory, not capacity). width was 64 but native-256^3 fwd OOMs >32GB there (measured: w64 fwd OOM, w48 22.8GB, w40 19.2GB, w32 15.6GB). Set to 40: full train(128^3 patch)+AR-eval(native 256^3) verified GREEN with PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True. Capacity unchanged vs w64 (same 16.8M). REQUIRES expandable_segments allocator for the AR-eval loop (defrags reserved pool).",
+      "_capacity_note": "Capacity band: the four architecturally-unconstrained baselines are matched at ~28-30M so the leaderboard measures METHOD, not size (was 16.8-33.6M = 2.0x spread). Matched UPWARD -- shrinking strong models to fit the weakest was rejected. All values measured at the production rollout shape (C=4, t_in=1) through _hp_args->build_config->get_model. DeepONet is deliberately NOT in this band: see its own _note. tfno: modes 16->18 (16.8->30.3M). NOTE its real capacity knob is MODES, not rank: TuckerSpectralConv3d clamps r=min(rank,in,out,modes...), and the core is rank^5, so modes=16 pins rank<=16 and only modes 16 (16.8M) / 18 (30.3M) exist near this band -- there is no 25M setting. width does NOT change capacity (it only sizes the 1x1 convs). Measured 10.3GB.",
+      "GRAD_CKPT": true,
+      "_v2_note": "GRAD_CKPT MANDATORY for native-256 training: Phase A 2026-07-16 OOM without, 26.8GB/1156ms with.",
+      "_width_amendment": "2026-07-17 final = w40 (rolled back 40->32->24->40). Width was dropped to w24 after a WDDM shared-memory overflow and an epoch-1 validation threshold breach, but w24 lost to persistence on relam50 rollout (nRMSE 1.28, catastrophic ensemble error), triggering the pre-registered rollback criterion; a single-sample overfitting probe (16^3, 80 steps, a true-capacity proxy) confirmed w40 loss 0.00188 vs w24 0.01209 (6.4x). Width is a capacity knob even at constant parameter count; reproduce with benchmark/scripts/probe_width_capacity.py."
+    },
+    "transolver": {
+      "TRANSOLVER_DIM": 288,
+      "TRANSOLVER_DEPTH": 12,
+      "TRANSOLVER_HEADS": 12,
+      "TRANSOLVER_SLICES": 64,
+      "TRANSOLVER_PATCH_SIZE": [
+        16,
+        16,
+        16
+      ],
+      "_params_M": 29.73,
+      "_peak_GB": 2.8,
+      "_phys_batch": 8,
+      "_params_note": "27.99M measured at the production velocity-task shape (C=4, t_in=1) via _hp_args->build_config->get_model. transolver sizes from BOTH len(INDICATORS) and t_in, so quote it with both: the old 42.9M was measured at t_in=20, a retired protocol. 5-channel configs (scalar/stratified) differ.",
+      "_capacity_note": "Capacity band: the four architecturally-unconstrained baselines are matched at ~28-30M so the leaderboard measures METHOD, not size (was 16.8-33.6M = 2.0x spread). Matched UPWARD -- shrinking strong models to fit the weakest was rejected. All values measured at the production rollout shape (C=4, t_in=1) through _hp_args->build_config->get_model. DeepONet is deliberately NOT in this band: see its own _note. transolver: UNCHANGED (dim 384 / depth 12) -- it already sits in the band at 28.0M. Its count varies with BOTH len(INDICATORS) and t_in; the old 42.9M was measured at t_in=20 and is stale now that NS-Markovian t_in=1 is the protocol. Measured 8.4GB.",
+      "TRANSOLVER_MAX_PATCHES": 4096,
+      "_v2_note": "v2 native-256 (2026-07-16): patch 8->16, dim 384->288, pos table sized to the REAL token count 4096 (TRANSOLVER_MAX_PATCHES; the old hardcoded 512 was silently stretched 8-64x by interpolation). 29.73M keeps the 28-30M band (4-model spread 1.07 <= 1.25). Native fwd+bwd measured 2.8GB/28ms (bf16, batch1) -- no GRAD_CKPT needed. Sweep notes: patch8 needs dim%12==0 (320/12 not integer -> attention reshape error, do not retry); patch8/dim288=25.6M under band, patch8/dim384=40.4M over (32768-token pos table alone is 12.6M at dim384). patch16 coarsens the token grid to 16^3 voxels -- high-k fidelity risk is exactly what Phase B B2/B3 tests; v1 checkpoints (dim384/patch8) are incompatible with this JSON, per v2 reset (old matrix discarded)."
+    },
+    "factformer": {
+      "FACTFORMER_DIM": 320,
+      "FACTFORMER_DEPTH": 10,
+      "FACTFORMER_HEADS": 10,
+      "FACTFORMER_DIM_HEAD": 32,
+      "_params_M": 25.3,
+      "_peak_GB": 14.6
+    },
+    "dpot": {
+      "DPOT_DIM": 384,
+      "DPOT_DEPTH": 12,
+      "DPOT_HEADS": 12,
+      "DPOT_SPECTRAL_MODES": 16,
+      "DPOT_PATCH_SIZE": [
+        8,
+        8,
+        8
+      ],
+      "_params_M": 39.3,
+      "_peak_GB": 2.3,
+      "_phys_batch": 8
+    },
+    "deeponet": {
+      "DEEPONET_P": 768,
+      "DEEPONET_WIDTH": 192,
+      "_params_M": 7.0,
+      "_peak_GB": 24.5,
+      "_note": "trunk activations explode on a dense 128^3 grid; ~9M is an ARCHITECTURAL ceiling, not a choice. MEASURED 2026-07-14: P=768/width=192 already peaks at 12.2GB, and every larger setting tried (P=2048, or width>=224) OOMs a 32GB GPU outright. It therefore CANNOT join the ~28-30M band. Kept at its ceiling and reported honestly rather than dragging the other four down to 9M to match it (explicit user decision 2026-07-14): shrinking strong baselines to the weakest architecture's limit would make every number worse to buy a fairness that the paper can simply state instead.",
+      "_params_note": "6.99M measured at the ONLY shape it is ever built in: the pressure task, 3->1 channels, t_in=1 (REQUIRED puts deeponet in 'pressure' and nowhere else). Earlier values were wrong in a subtle way worth recording: 8.8M is its rollout 4->4 count and 9.16M was measured at t_in=20 -- both are configurations deeponet is NEVER instantiated in, so the published number described a run that will not exist. deeponet sizes from len(INDICATORS), so its count is only meaningful once you say which task. This also means the honest capacity gap is 28-30M vs 7.0M = 4.3x, not 3.4x -- the error was understating the very exception we are being transparent about."
+    },
+    "pde_refiner": {
+      "REFINER_HIDDEN": 48,
+      "REFINER_STEPS": 3,
+      "_params_M": 28.3,
+      "_peak_GB": 14.6,
+      "_note": "reads REFINER_HIDDEN/REFINER_STEPS (REFINER_TIME_DIM was inert, removed); K=3 refine steps"
+    },
+    "flow_refiner": {
+      "REFINER_HIDDEN": 48,
+      "REFINER_STEPS": 3,
+      "REFINER_TIME_DIM": 128,
+      "ODE_STEPS": 4,
+      "SIGMA_SCHEDULE": "ddpm",
+      "_params_M": 28.3,
+      "_peak_GB": 14.6,
+      "_note": "in-house method"
+    },
+    "acdm": {
+      "ACDM_DIM": 64,
+      "ACDM_DIFF_STEPS": 100,
+      "_params_M": 21.5,
+      "_peak_GB": 12.0,
+      "_note": "acdm reads ACDM_DIM/ACDM_DIFF_STEPS (not HIDDEN_CHANNELS); 100-step DDPM sampler — rollout AR eval cost is heavy, appendix-only"
+    },
+    "latent_diffusion": {
+      "HIDDEN_CHANNELS": 48,
+      "NUM_LAYERS": 2,
+      "_params_M": 47.8,
+      "_two_stage": true,
+      "_note": "TWO-STAGE: train AE (stage=ae) then latent DDPM (stage=ddpm); not a single train_benchmark run"
+    }
+  }
+}

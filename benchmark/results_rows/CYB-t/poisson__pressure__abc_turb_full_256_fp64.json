@@ -1,0 +1,15 @@
+{
+  "model": "poisson",
+  "task": "pressure",
+  "case": "abc_turb_full_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 6.670942155448989e-07,
+  "nRMSE_std": 2.9079511991092128e-08,
+  "fRMSE_high_mean": 0.0009489424136357711,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 0.004232911356523925
+}

@@ -1,0 +1,17 @@
+{
+  "model": "smagorinsky",
+  "task": "sgs",
+  "case": "decay_hotstart_re86",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": null,
+  "nRMSE_std": null,
+  "fRMSE_high_mean": 0.00040329517636849893,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.16450213801627064,
+  "sgs_Pi_mean": 0.07161212307127084,
+  "sgs_backscatter_frac_mean": 0.0
+}

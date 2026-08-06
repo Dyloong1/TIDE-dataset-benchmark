@@ -1,0 +1,15 @@
+{
+  "model": "poisson",
+  "task": "pressure",
+  "case": "decay_saffman_v2",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 1.0987591126236524e-06,
+  "nRMSE_std": 3.667961507537536e-08,
+  "fRMSE_high_mean": 0.0006011599603773314,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 0.011143347129737045
+}

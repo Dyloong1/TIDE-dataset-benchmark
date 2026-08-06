@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use TIDE, please cite the paper below."
+title: "TIDE: Turbulent Incompressible DNS Ensembles"
+authors:
+  - family-names: Dai
+    given-names: Yilong
+  - family-names: Sun
+    given-names: Yiming
+  - family-names: Chen
+    given-names: Yiheng
+  - family-names: Chen
+    given-names: Shengyu
+  - family-names: Givi
+    given-names: Peyman
+  - family-names: Jia
+    given-names: Xiaowei
+  - family-names: Yu
+    given-names: Runlong
+license: MIT
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21589489
+    description: "Citable record: datasheet, code snapshot, split manifest"
+preferred-citation:
+  type: article
+  title: "TIDE: A Physically Diverse 3D Turbulence Benchmark Dataset for Advancing Scientific Machine Learning"
+  year: 2026
+  url: "https://arxiv.org/abs/2608.04222"
+  identifiers:
+    - type: other
+      value: "arXiv:2608.04222"
+      description: "arXiv preprint"
+  authors:
+    - family-names: Dai
+      given-names: Yilong
+    - family-names: Sun
+      given-names: Yiming
+    - family-names: Chen
+      given-names: Yiheng
+    - family-names: Chen
+      given-names: Shengyu
+    - family-names: Givi
+      given-names: Peyman
+    - family-names: Jia
+      given-names: Xiaowei
+    - family-names: Yu
+      given-names: Runlong
+  notes: "Under submission to the ACM SIGKDD Datasets & Benchmarks Track."

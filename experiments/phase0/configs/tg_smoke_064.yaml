@@ -1,0 +1,15 @@
+name: tg_smoke_064
+ic: taylor_green
+t_end: 10.0
+log_every_steps: 1
+spectrum_every_steps: 200
+solver:
+  N: 64
+  nu: 0.00125        # Re = 800
+  dtype: fp32
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.01
+  forcing:
+    type: none

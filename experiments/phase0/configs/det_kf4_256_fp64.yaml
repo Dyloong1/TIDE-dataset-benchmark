@@ -1,0 +1,37 @@
+# Route 2 (deterministic widened forcing) production config -- Machine B / CYB-q.
+# Derived from cert_fixedpower_fp64.yaml by widening the forcing band k_f 2 -> 4
+# (147 forced modes vs 17): more distributed injection, harder for the laminar
+# attractor that relaminarizes k_f=2 at Re_lambda~87 to form.
+#
+# Why every other knob is UNCHANGED from the k_f=2 cert config:
+#   fixed_power pins steady <eps> == eps_w == 0.096 BY CONSTRUCTION, independent
+#   of k_f. Hence eta = (nu^3/eps)^(1/4) and k_max*eta = 85*(0.0022^3/0.096)^0.25
+#   = 1.55 are IDENTICAL to the k_f=2 run -> still Class I. No nu retune needed
+#   for resolution. (Verified statically before launch, CYB-q 2026-06-13.)
+#
+# Open risks this config does NOT resolve (must be measured, see PROMPT to CYB-t):
+#   - whether k_f=4 survives the full >=240 T_E sampling window (probe only
+#     covered ~120 t.u.; collapse is a deterministic attractor that may merely
+#     be pushed later). A14 eps-collapse sentinel MUST stay on for the long run.
+#   - A5 (L_box/L >= 4): k_f=4 injects at higher k -> L shrinks -> A5 expected
+#     EASIER, but unmeasured. Short diagnostic run checks this before the 6h run.
+name: det_kf4_256_fp64
+ic: random_solenoidal
+seed: 42
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0         # informational; runner uses --t-spinup/--t-sample
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: fixed_power
+    k_f: 4.0
+    eps_w: 0.096

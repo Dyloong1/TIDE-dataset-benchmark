@@ -1,0 +1,20 @@
+name: hit_relam100_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 60.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: energy_preserving
+    k_f: 2.0
+    E_f0: 0.3

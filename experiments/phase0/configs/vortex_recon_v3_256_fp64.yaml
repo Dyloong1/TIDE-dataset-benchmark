@@ -1,0 +1,30 @@
+# Vortex reconnection RESCUE v3 — v2 (circ=5/perturb=0.15/nu=0.0025) still pure
+# diffusion. Diagnosis: umax decayed monotonically (tubes never interacted), and
+# the KEY physics — antiparallel tube pairs SELF-TRANSLATE, they do NOT approach
+# on their own; approach requires the Crow instability to bend the centerlines
+# together BEFORE viscosity spreads them. v2's viscous time tau_visc=core^2/4nu
+# was only ~12 t.u., so the tubes diffused before Crow could grow.
+# Fix: lower nu 0.0025->0.0015 (tau_visc 12->20 t.u., Re_Gamma 2000->3333, gives
+# Crow time to grow) + stronger Crow perturb 0.15->0.35 + closer sep 1.2->0.9.
+# Budget: Class I eps_peak <= nu^3*1.03e7 = 0.035 at nu=0.0015; an omega~5-10x
+# reconnection spike is ~0.015-0.03, within Class I (monitor instantaneous k_maxeta).
+name: vortex_recon_v3_256_fp64
+ic: vortex_tubes
+seed: 0
+vt_sep: 0.9
+vt_core: 0.35
+vt_circ: 5.0
+vt_perturb: 0.35
+t_end: 18.0
+log_every_steps: 1
+spectrum_every_steps: 25
+solver:
+  N: 256
+  nu: 0.0015
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.003
+  forcing:
+    type: none

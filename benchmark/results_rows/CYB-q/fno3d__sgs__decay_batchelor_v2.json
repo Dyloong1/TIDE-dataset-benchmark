@@ -1,0 +1,17 @@
+{
+  "model": "fno3d",
+  "task": "sgs",
+  "case": "decay_batchelor_v2",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__sgs__decay_batchelor_v2/best.pt",
+  "nRMSE_mean": null,
+  "nRMSE_std": null,
+  "fRMSE_high_mean": 0.017041631590794113,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.5850890962516561,
+  "sgs_Pi_mean": 6.6851394930221e-05,
+  "sgs_backscatter_frac_mean": 0.48860665980507345
+}

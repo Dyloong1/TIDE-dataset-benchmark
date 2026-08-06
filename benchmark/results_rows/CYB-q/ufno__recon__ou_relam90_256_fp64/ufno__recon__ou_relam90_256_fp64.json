@@ -1,0 +1,18 @@
+{
+  "model": "ufno",
+  "task": "recon",
+  "case": "ou_relam90_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/ufno__recon__ou_relam90_256_fp64/best.pt",
+  "nRMSE_mean": 0.2251457513547411,
+  "nRMSE_std": 0.013213505757692484,
+  "fRMSE_high_mean": 67.07649993896484,
+  "enstrophy_ratio_mean": 0.8796475155680787,
+  "spectrum_L2_mean": 0.1472649022060282,
+  "freq_drift_mean": -0.05609733191337071,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1806.822478649663,
+  "fRMSE_mid_mean": 84.22322950176164,
+  "vorticity_flatness_mean": 5.8271645284166524,
+  "vorticity_tail_frac_mean": 0.01434868574142456
+}

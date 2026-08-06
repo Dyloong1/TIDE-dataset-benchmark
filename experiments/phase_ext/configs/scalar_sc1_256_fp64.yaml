@@ -1,0 +1,38 @@
+# Passive scalar in HIT, 256^3 fp64 — extended-physics axis 2.
+# Velocity = VALIDATED #1 (ou_relam90, Class I) UNCHANGED (the flow is pure NS;
+# the scalar rides along). Schmidt number Sc = nu/kappa = 1 (kappa = nu = 0.0022)
+# so the Batchelor scale eta_B = eta/sqrt(Sc) = eta -> the SAME k_max*eta>=1.5 gate
+# resolves the scalar (Sc>>1 would need a finer grid than 256^3, out of scope).
+# mean_grad = 1.0: a uniform background scalar gradient dTheta/dz so the vertical
+# velocity stirring it sustains a STATISTICALLY STEADY scalar variance (forced-steady
+# scalar alongside the forced-steady velocity), giving a clean Obukhov-Corrsin
+# k^-5/3 scalar spectrum to check.
+name: scalar_sc1_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.0725
+    ou_seed: 1234
+scalar:
+  enabled: true
+  kappa: 0.0022      # = nu -> Sc = 1
+  mean_grad: 1.0     # uniform background gradient -> stationary scalar variance
+  b_rms: 0.1
+  spectrum_power: 2.0
+  seed: 7

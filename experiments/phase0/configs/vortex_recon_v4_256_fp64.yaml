@@ -1,0 +1,28 @@
+# Vortex reconnection RESCUE v4 (final attempt) — v3 showed umax rose briefly
+# (t=2, Crow started bending) then decayed: the instability initiated but was
+# damped by viscosity before the tubes touched. Push harder: perturb 0.35->0.5
+# (very strong Crow seed) + sep 0.9->0.7 (sep/core=2.0, tubes nearly touching at
+# t=0 so they reconnect before diffusing) + nu=0.0015 (tau_visc=20). If this still
+# only diffuses, the honest conclusion is that 256^3-Class-I cannot host a real
+# antiparallel reconnection (Crow growth vs viscous diffusion don't separate at
+# the reachable Re_Gamma/resolution combo) — an engineering limit, not forced.
+name: vortex_recon_v4_256_fp64
+ic: vortex_tubes
+seed: 0
+vt_sep: 0.7
+vt_core: 0.35
+vt_circ: 5.0
+vt_perturb: 0.5
+t_end: 25.0
+log_every_steps: 1
+spectrum_every_steps: 25
+solver:
+  N: 256
+  nu: 0.0015
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.003
+  forcing:
+    type: none

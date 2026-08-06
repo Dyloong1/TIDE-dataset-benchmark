@@ -1,0 +1,30 @@
+# Free-decay (unforced) from #1's matured turbulent state (Re_lambda~86).
+# Warm-started via --resume-from-ckpt; ic/seed fields are ignored. forcing=none
+# lets the cascade decay freely -> K(t)~(t-t0)^-alpha. eps_sentinel OFF (eps
+# is supposed to fall). Evaluate with eval_decaying.py + D-group.
+name: decay_hotstart_re86
+# NOTE: ic/seed are ignored on resume, so hot-start ensemble members must each resume from a
+# DIFFERENT mature parent checkpoint: resuming every pool from one checkpoint with different
+# seed labels yields bitwise copies of a single trajectory, not an ensemble. A hot start is
+# correct for this family (decay needs a mature turbulent state); independence comes from one
+# distinct parent trajectory per seed. Parent source is relam90 (same nu=0.0022), which
+# provides 13 mutually distinct checkpoints (base + pool1..pool12), enough for 8 independent
+# seeds. Caution: same viscosity + same checkpoint time does not imply the same source;
+# verify parentage by checkpoint content (e.g. kinetic-energy level), not by filename.
+ic: random_solenoidal   # IGNORED on resume — see above; --resume-from-ckpt is REQUIRED
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 100.0
+log_every_steps: 1
+spectrum_every_steps: 50
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

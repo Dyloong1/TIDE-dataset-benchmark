@@ -1,0 +1,30 @@
+# Helical OU forcing (3rd forcing axis) — Re_lambda~86, 256^3 fp64.
+# Same as #1 OU but forcing.type=helical_ou: net-helicity injection breaks mirror
+# symmetry (<u.omega> != 0), a flow statistically distinct from mirror-symmetric OU.
+# Probe (warm-start from #1, 60 t.u.) confirmed: stable, helicity builds to
+# rel_helicity~0.2, k_maxeta stays Class I (post-transient mean 1.68, min 1.52).
+# sigma2=0.0725 kept (helical projection lowers eps to ~0.073 vs OU 0.093, so
+# k_maxeta is actually a bit safer; real Re_lambda slightly below 86 — labeled at eval).
+name: helical_re86_retune_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 510.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: helical_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.045
+    ou_seed: 1234
+    helicity_sign: 1

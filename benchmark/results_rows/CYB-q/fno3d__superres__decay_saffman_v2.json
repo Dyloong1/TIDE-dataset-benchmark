@@ -1,0 +1,18 @@
+{
+  "model": "fno3d",
+  "task": "superres",
+  "case": "decay_saffman_v2",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__superres__decay_saffman_v2/best.pt",
+  "nRMSE_mean": 0.25038862199175593,
+  "nRMSE_std": 0.028279516214229236,
+  "fRMSE_high_mean": 0.896120125172185,
+  "enstrophy_ratio_mean": 0.7266206431622598,
+  "spectrum_L2_mean": 0.07922259199560858,
+  "freq_drift_mean": -0.11785589978920624,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1048.7438258750765,
+  "fRMSE_mid_mean": 42.66007086809944,
+  "vorticity_flatness_mean": 4.283298071692972,
+  "vorticity_tail_frac_mean": 0.011266999384936164
+}

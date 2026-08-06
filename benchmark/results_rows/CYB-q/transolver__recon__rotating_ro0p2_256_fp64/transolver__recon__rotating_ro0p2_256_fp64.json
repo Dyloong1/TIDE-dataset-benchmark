@@ -1,0 +1,18 @@
+{
+  "model": "transolver",
+  "task": "recon",
+  "case": "rotating_ro0p2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/transolver__recon__rotating_ro0p2_256_fp64/best.pt",
+  "nRMSE_mean": 0.13340371890979655,
+  "nRMSE_std": 0.015450622318063247,
+  "fRMSE_high_mean": 196.52130246629903,
+  "enstrophy_ratio_mean": 4.9461287423676135,
+  "spectrum_L2_mean": 0.016517913809009625,
+  "freq_drift_mean": 0.16647477696339288,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1309.9090815525428,
+  "fRMSE_mid_mean": 143.90164214489508,
+  "vorticity_flatness_mean": 6.7127849073971015,
+  "vorticity_tail_frac_mean": 0.01729040636735804
+}

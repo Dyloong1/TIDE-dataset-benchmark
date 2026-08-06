@@ -1,0 +1,18 @@
+{
+  "model": "tfno",
+  "task": "recon",
+  "case": "rotating_ro0p2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints/bench_q/tfno__recon__rotating_ro0p2_256_fp64/best.pt",
+  "nRMSE_mean": 0.38658634821573895,
+  "nRMSE_std": 0.0828437634545951,
+  "fRMSE_high_mean": 96.90796796013328,
+  "enstrophy_ratio_mean": 13.15073793074664,
+  "spectrum_L2_mean": 0.10673534008217793,
+  "freq_drift_mean": 0.41259461056952385,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 3714.706787109375,
+  "fRMSE_mid_mean": 358.21890408385036,
+  "vorticity_flatness_mean": 4.420412671332266,
+  "vorticity_tail_frac_mean": 0.006098718035454843
+}

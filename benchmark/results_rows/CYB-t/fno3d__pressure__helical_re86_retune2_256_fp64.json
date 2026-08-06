@@ -1,0 +1,15 @@
+{
+  "model": "fno3d",
+  "task": "pressure",
+  "case": "helical_re86_retune2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_helical_abc\\fno3d__pressure__helical_re86_retune2_256_fp64\\best.pt",
+  "nRMSE_mean": 0.7993360243591607,
+  "nRMSE_std": 0.04942319563437854,
+  "fRMSE_high_mean": 0.24355236309416153,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 1.2253540006338381
+}

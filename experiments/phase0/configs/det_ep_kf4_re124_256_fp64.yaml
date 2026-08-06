@@ -1,0 +1,31 @@
+# Deterministic energy-preserving forcing at higher Re (Re_lambda~124), the most
+# promising point from the Reynolds sweep (it showed touch-bottom-then-rebound,
+# the signature of a true quasi-equilibrium, unlike Re~87 collapse or Re~179 slow
+# decay). This config is for a LONG confirm run judged by the objective A7 drift
+# and the full A-group — not the 50 t.u. sweep heuristic.
+#
+# nu=0.0018 -> Re_lambda~124, k_max*eta~1.58 (Class I) at the sweep's eps. EP pins
+# the k<=k_f band energy; E_f0 is set at runtime from the spun-up state (the
+# runner/probe pins it), so this config carries the scheme + nu; E_f0 handling is
+# in the energy_preserving forcing. Spin-up via this same scheme from random IC.
+name: det_ep_kf4_re124_256_fp64
+ic: random_solenoidal
+seed: 42
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0018
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: energy_preserving
+    k_f: 4.0
+    E_f0: 0.14      # ~ the healthy band energy seen post-spinup at this nu; the
+                    # scheme pins to this. Refined from the confirm run if needed.

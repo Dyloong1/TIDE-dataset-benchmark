@@ -1,0 +1,18 @@
+{
+  "model": "fno3d",
+  "task": "superres",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\fno3d__superres__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 0.1511040426352445,
+  "nRMSE_std": 0.012067200047039723,
+  "fRMSE_high_mean": 0.8575630187988281,
+  "enstrophy_ratio_mean": 0.7737254664009693,
+  "spectrum_L2_mean": 0.01660439079883052,
+  "freq_drift_mean": -0.07520967597762744,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 886.7499928193934,
+  "fRMSE_mid_mean": 41.96016835231407,
+  "vorticity_flatness_mean": 5.565998208289053,
+  "vorticity_tail_frac_mean": 0.014749261678433885
+}

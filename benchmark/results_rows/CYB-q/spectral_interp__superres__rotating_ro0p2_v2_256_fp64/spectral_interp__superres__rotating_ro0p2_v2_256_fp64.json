@@ -1,0 +1,18 @@
+{
+  "model": "spectral_interp",
+  "task": "superres",
+  "case": "rotating_ro0p2_v2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.13313274465355218,
+  "nRMSE_std": 0.014661268097470604,
+  "fRMSE_high_mean": 0.37951307729178785,
+  "enstrophy_ratio_mean": 0.750365302843206,
+  "spectrum_L2_mean": 0.00714960036908879,
+  "freq_drift_mean": -0.08838100658327926,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1370.3636019837622,
+  "fRMSE_mid_mean": 35.137674855250935,
+  "vorticity_flatness_mean": 7.19625690871594,
+  "vorticity_tail_frac_mean": 0.01631445978202072
+}

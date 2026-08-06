@@ -1,0 +1,18 @@
+{
+  "model": "tfno",
+  "task": "recon",
+  "case": "ou_robust_tau1_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/tfno__recon__ou_robust_tau1_256_fp64/best.pt",
+  "nRMSE_mean": 0.7834650523522321,
+  "nRMSE_std": 0.024863627364363112,
+  "fRMSE_high_mean": 41.0720957587747,
+  "enstrophy_ratio_mean": 11.386222960902195,
+  "spectrum_L2_mean": 0.5515597375000224,
+  "freq_drift_mean": 2.2330849240807926,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 5759.547755821079,
+  "fRMSE_mid_mean": 629.584955552045,
+  "vorticity_flatness_mean": 5.007324078503777,
+  "vorticity_tail_frac_mean": 0.009595106629764332
+}

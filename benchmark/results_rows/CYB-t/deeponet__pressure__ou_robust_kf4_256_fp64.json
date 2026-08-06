@@ -1,0 +1,15 @@
+{
+  "model": "deeponet",
+  "task": "pressure",
+  "case": "ou_robust_kf4_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_kf4\\deeponet__pressure__ou_robust_kf4_256_fp64\\best.pt",
+  "nRMSE_mean": 0.9998249318085465,
+  "nRMSE_std": 0.0021531095273359733,
+  "fRMSE_high_mean": 0.1055631459343667,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 1.0551414069007425
+}

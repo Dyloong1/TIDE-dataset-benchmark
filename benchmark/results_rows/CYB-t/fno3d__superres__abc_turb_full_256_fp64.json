@@ -1,0 +1,18 @@
+{
+  "model": "fno3d",
+  "task": "superres",
+  "case": "abc_turb_full_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_helical_abc\\fno3d__superres__abc_turb_full_256_fp64\\best.pt",
+  "nRMSE_mean": 0.06471732375668544,
+  "nRMSE_std": 0.005567709413127961,
+  "fRMSE_high_mean": 0.3767845017068526,
+  "enstrophy_ratio_mean": 1.0248807843993692,
+  "spectrum_L2_mean": 0.004333075373342224,
+  "freq_drift_mean": -0.0071936092686419395,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 727.5147393918505,
+  "fRMSE_mid_mean": 17.68118600284352,
+  "vorticity_flatness_mean": 2.3197612855948653,
+  "vorticity_tail_frac_mean": 6.161016576430377e-05
+}

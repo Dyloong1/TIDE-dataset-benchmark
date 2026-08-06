@@ -1,0 +1,34 @@
+# Rotating HIT, 256^3 fp64 — extended-physics axis 1 (Coriolis).
+# Velocity regime = the VALIDATED #1 (ou_relam90: nu=0.0022, OU k_f=2, sigma2=0.0725,
+# Class I k_max*eta=1.563) so the small scales stay resolved (rotation does not
+# change the Kolmogorov scale, so k_max*eta>=1.5 still applies unchanged).
+# Rotation: Omega along z. With u'~1, L~1 the Rossby number Ro=u'/(2 Omega L) ~ 0.2
+# at Omega=2.5 — moderate-strong rotation, enough to grow the 2D/columnar energy
+# partition signal (frac_2D rises) without fully two-dimensionalizing.
+# NOTE: dt is u-CFL limited; the inertial period 2pi/(2 Omega)~1.26 is well resolved
+# (dt_max=0.005 << period), so no extra timestep limit is needed at this Omega.
+name: rotating_ro0p2_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.0725
+    ou_seed: 1234
+rotation:
+  enabled: true
+  omega_z: 2.5

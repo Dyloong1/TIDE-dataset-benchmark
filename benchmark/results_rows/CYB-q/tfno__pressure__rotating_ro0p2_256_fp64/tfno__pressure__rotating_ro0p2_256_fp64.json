@@ -1,0 +1,15 @@
+{
+  "model": "tfno",
+  "task": "pressure",
+  "case": "rotating_ro0p2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints/bench_q/tfno__pressure__rotating_ro0p2_256_fp64/best.pt",
+  "nRMSE_mean": 0.050988017417052216,
+  "nRMSE_std": 0.010032524973210945,
+  "fRMSE_high_mean": 4.687723781548295,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 257.759199254653
+}

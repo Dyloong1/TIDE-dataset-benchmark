@@ -1,0 +1,17 @@
+{
+  "model": "fno3d",
+  "task": "sgs",
+  "case": "ou_robust_kf4_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_kf4\\fno3d__sgs__ou_robust_kf4_256_fp64\\best.pt",
+  "nRMSE_mean": 0.7473642872829064,
+  "nRMSE_std": 0.007206441443076475,
+  "fRMSE_high_mean": 0.01880639919317236,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.5319877909679039,
+  "sgs_Pi_mean": 0.00018115099816236134,
+  "sgs_backscatter_frac_mean": 0.4613341677422617
+}

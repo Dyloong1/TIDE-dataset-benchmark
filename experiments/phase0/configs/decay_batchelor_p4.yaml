@@ -1,0 +1,21 @@
+# Free-decay from a Batchelor (k^4 low-k) random IC. Cold start: relax the IC
+# into a turbulent cascade, then decay. Expect K(t)~t^-alpha with alpha~1.4.
+name: decay_batchelor_p4
+ic: random_solenoidal
+seed: 0
+k_p: 4.0
+u_rms: 1.0
+ic_spectrum_power: 4.0
+t_end: 60.0
+log_every_steps: 1
+spectrum_every_steps: 50
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

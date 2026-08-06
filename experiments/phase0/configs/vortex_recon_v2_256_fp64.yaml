@@ -1,0 +1,29 @@
+# Vortex reconnection RESCUE v2 — v1 (circ=2/perturb=0.02) was pure diffusion, NO
+# reconnection (eps peaked at t=0 then decayed monotonically, omega^2 never
+# amplified). Diagnosis: tubes too weak + Crow perturbation too small to bend the
+# tubes together before viscosity spreads them. eps had 1250x headroom to the
+# Class I budget, so the exclusion ("256^3 can't do reconnection") was premature.
+# Fix: circ 2->5 (Re_Gamma=circ/nu=2000, Kerr's reconnection regime) + Crow
+# perturbation 0.02->0.15 (strong sinusoidal centerline bend) + closer tubes.
+# Budget check: Class I allows eps_peak <= nu^3*1.03e7 = 1.6e-1 at nu=0.0025;
+# a reconnection spike on these tubes is O(1e-2), well within Class I.
+name: vortex_recon_v2_256_fp64
+ic: vortex_tubes
+seed: 0
+vt_sep: 1.2        # closer (was 1.57) so tubes interact sooner
+vt_core: 0.35      # slightly tighter core
+vt_circ: 5.0       # Re_Gamma=2000 (was 800)
+vt_perturb: 0.15   # strong Crow seed (was 0.02)
+t_end: 20.0
+log_every_steps: 1
+spectrum_every_steps: 25
+solver:
+  N: 256
+  nu: 0.0025
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.004
+  forcing:
+    type: none

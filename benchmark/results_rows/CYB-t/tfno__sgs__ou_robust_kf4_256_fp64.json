@@ -1,0 +1,17 @@
+{
+  "model": "tfno",
+  "task": "sgs",
+  "case": "ou_robust_kf4_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_kf4\\tfno__sgs__ou_robust_kf4_256_fp64\\best.pt",
+  "nRMSE_mean": 0.7457306291542801,
+  "nRMSE_std": 0.00706025777026075,
+  "fRMSE_high_mean": 0.017140810432679513,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.535142557293761,
+  "sgs_Pi_mean": -5.268184439973637e-07,
+  "sgs_backscatter_frac_mean": 0.5251673097703972
+}

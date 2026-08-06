@@ -1,0 +1,18 @@
+{
+  "model": "identity",
+  "task": "recon",
+  "case": "decay_batchelor_v2",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.9746744095110426,
+  "nRMSE_std": 3.337474878676079e-05,
+  "fRMSE_high_mean": 340.2265627991919,
+  "enstrophy_ratio_mean": 13.061917510687136,
+  "spectrum_L2_mean": 0.9975122821097281,
+  "freq_drift_mean": 14.401149562760896,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 5636.7685451133575,
+  "fRMSE_mid_mean": 383.1833615770527,
+  "vorticity_flatness_mean": 9.557047208150228,
+  "vorticity_tail_frac_mean": 0.019059620651544307
+}

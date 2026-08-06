@@ -1,0 +1,15 @@
+{
+  "model": "tfno",
+  "task": "pressure",
+  "case": "ou_robust_kf4_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_kf4\\tfno__pressure__ou_robust_kf4_256_fp64\\best.pt",
+  "nRMSE_mean": 0.9620359551672842,
+  "nRMSE_std": 0.012174829877381546,
+  "fRMSE_high_mean": 0.16038336561006658,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 6.335081923241709
+}

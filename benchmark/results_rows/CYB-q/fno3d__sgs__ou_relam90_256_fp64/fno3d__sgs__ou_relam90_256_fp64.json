@@ -1,0 +1,17 @@
+{
+  "model": "fno3d",
+  "task": "sgs",
+  "case": "ou_relam90_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__sgs__ou_relam90_256_fp64/best.pt",
+  "nRMSE_mean": 0.7831359342032788,
+  "nRMSE_std": 0.012329174955017593,
+  "fRMSE_high_mean": 0.01772909249891253,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.49505729418174893,
+  "sgs_Pi_mean": 0.0007852353851822223,
+  "sgs_backscatter_frac_mean": 0.4673052009414224
+}

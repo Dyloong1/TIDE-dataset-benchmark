@@ -1,0 +1,15 @@
+{
+  "model": "deeponet",
+  "task": "pressure",
+  "case": "ou_robust_tau1_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/deeponet__pressure__ou_robust_tau1_256_fp64/best.pt",
+  "nRMSE_mean": 1.00495665213641,
+  "nRMSE_std": 0.009827963130089039,
+  "fRMSE_high_mean": 0.2888348710303213,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 1.2934767872679467
+}

@@ -1,0 +1,18 @@
+{
+  "model": "transolver",
+  "task": "recon",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\transolver__recon__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 0.23061365239760456,
+  "nRMSE_std": 0.015525353406414859,
+  "fRMSE_high_mean": 117.52765954709521,
+  "enstrophy_ratio_mean": 2.8822546098746504,
+  "spectrum_L2_mean": 0.04029394868834346,
+  "freq_drift_mean": 0.12412137728111416,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1702.0492350260417,
+  "fRMSE_mid_mean": 192.27827393774893,
+  "vorticity_flatness_mean": 6.421514847699334,
+  "vorticity_tail_frac_mean": 0.016716398444830204
+}

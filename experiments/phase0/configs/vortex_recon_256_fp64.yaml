@@ -1,0 +1,31 @@
+# Antiparallel vortex-tube reconnection, 256^3 fp64. Two opposite Lamb-Oseen
+# tubes (Melander-Hussain 1989, Kerr 1993). Coherent-structure / verification
+# sample: anisotropic, transient; the reconnection strain spike sets the
+# smallest eta, so 256^3 supports only moderate circulation/Re at Class I.
+# nu=0.0025 + circ=2.0 + core=0.4 as a balance: strong enough that a real
+# reconnection strain spike develops (circ=1.0 gave u_rms~0.03, risk of mere
+# diffusion not reconnection -- review finding), weak enough to stay resolved.
+# ADMISSION CHECK (must pass before entering the dataset): the empirical short run
+# must show <omega^2> SPIKE (reconnection, not monotonic decay) AND the
+# instantaneous-minimum k_max*eta at that peak >= 1.5. If <omega^2> just decays,
+# raise circ; if the peak under-resolves, lower circ / raise nu.
+name: vortex_recon_256_fp64
+ic: vortex_tubes
+seed: 0
+vt_sep: 1.5708
+vt_core: 0.4
+vt_circ: 2.0
+vt_perturb: 0.02
+t_end: 30.0
+log_every_steps: 1
+spectrum_every_steps: 25
+solver:
+  N: 256
+  nu: 0.0025
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

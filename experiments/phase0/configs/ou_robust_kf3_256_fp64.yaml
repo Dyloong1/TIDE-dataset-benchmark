@@ -1,0 +1,29 @@
+# Eswaran-Pope stochastic (OU) forcing ??? phase-1 production candidate.
+# Random-phase low-band driving: no deterministic attractor, so no
+# relaminarization (the phase-0 failure mode of all band-pinned schemes).
+# nu = 0.0022 unchanged; (sigma2, tau) set the injected power -> eps -> eta.
+# sigma2=0.0725 calibrated over a full 245 T_E run: stationary eps~0.0931,
+# k_max*eta~1.563 (Class I, GREEN). (short-window calibration underestimates the
+# stationary eps and eps is sub-linear in sigma2 -> took 3 nudges to land here.)
+name: ou_robust_kf3_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 3.0
+    ou_tau: 2.0        # ~ one large-eddy turnover time T_L
+    ou_sigma2: 0.0725    # GREEN: stationary eps~0.0931 -> k_max*eta=1.563 (Class I, full 245 T_E run)
+    ou_seed: 1234

@@ -1,0 +1,15 @@
+{
+  "model": "fno3d",
+  "task": "pressure",
+  "case": "abc_turb_full_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_helical_abc\\fno3d__pressure__abc_turb_full_256_fp64\\best.pt",
+  "nRMSE_mean": 0.09761265227023293,
+  "nRMSE_std": 0.009463422314672626,
+  "fRMSE_high_mean": 0.1667826780501534,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 13.777771706674613
+}

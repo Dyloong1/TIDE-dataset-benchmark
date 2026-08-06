@@ -1,0 +1,39 @@
+# Stratified (Boussinesq) HIT, 256^3 fp64 — extended-physics axis 3.
+# Velocity = VALIDATED #1 (ou_relam90, Class I) + buoyancy back-reaction. The 256^3
+# DNS constraint forces WEAK-MODERATE stratification: the buoyancy Reynolds number
+# Re_b = eps/(nu N^2) must stay >> 1 for a turbulent inertial range to exist (else
+# the flow is wave/layer-dominated, not turbulence). With #1's eps~0.093, nu=0.0022:
+#   Re_b > 20  <=>  N^2 < eps/(20 nu) ~ 2.1.
+# Pick N^2 = 0.5 (N~0.71) -> Re_b ~ 42 (clearly turbulent) and the Ozmidov scale
+# l_O = sqrt(eps/N^3) ~ sqrt(0.093/0.35) ~ 0.51 sits between eta (~0.013) and L (~1),
+# so the buoyancy-affected range is resolved. Froude Fr=u'/(N L) ~ 1 (weak strat).
+# STRONG stratification (small Fr, small Re_b) is NOT resolvable on 256^3 and is
+# honestly excluded (the eval marks Re_b<20 / Ozmidov-unresolved as FAIL).
+# Pr = nu/kappa = 1 (kappa = nu).
+name: stratified_reb40_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.0725
+    ou_seed: 1234
+stratification:
+  enabled: true
+  N_sq: 0.5          # N~0.71 -> Re_b~42 (turbulent), Ozmidov resolved on 256^3
+  kappa: 0.0022      # = nu -> Pr = 1
+  seed: 7

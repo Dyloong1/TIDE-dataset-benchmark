@@ -1,0 +1,17 @@
+{
+  "model": "ufno",
+  "task": "sgs",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\ufno__sgs__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 1.3057039111268287,
+  "nRMSE_std": 0.18500343051364856,
+  "fRMSE_high_mean": 0.24844694721932506,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.18431149313555045,
+  "sgs_Pi_mean": 0.010387544355848256,
+  "sgs_backscatter_frac_mean": 0.4645278816129647
+}

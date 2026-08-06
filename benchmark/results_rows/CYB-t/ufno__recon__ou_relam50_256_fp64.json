@@ -1,0 +1,18 @@
+{
+  "model": "ufno",
+  "task": "recon",
+  "case": "ou_relam50_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t\\ufno__recon__ou_relam50_256_fp64\\best.pt",
+  "nRMSE_mean": 0.21807893847717957,
+  "nRMSE_std": 0.022057635470574197,
+  "fRMSE_high_mean": 53.943548838297524,
+  "enstrophy_ratio_mean": 1.104658539388694,
+  "spectrum_L2_mean": 0.21770488156699666,
+  "freq_drift_mean": -0.009296104801572202,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1707.3634200750612,
+  "fRMSE_mid_mean": 69.19546344233494,
+  "vorticity_flatness_mean": 6.196250036651013,
+  "vorticity_tail_frac_mean": 0.013891840682310216
+}

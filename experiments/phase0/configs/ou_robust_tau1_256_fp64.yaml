@@ -1,0 +1,46 @@
+# Eswaran-Pope stochastic (OU) forcing -- KDD tau-axis SHORT point (tau=1).
+# Random-phase low-band driving: no deterministic attractor, so no relaminarization.
+# Pairs with relam90 (tau=2) and ou_robust_tau4 (tau=4) to span the forcing
+# correlation-time regime {1,2,4}. nu=0.0022, k_f=2 fixed (== relam90).
+#
+# tau-Re coupling (measured precedent): tau4 RAISED eps so sigma2 had to DROP
+# 0.0725->0.0555 to keep k_max*eta>=1.5. By the same mechanism tau1 (shorter
+# correlation) LOWERS injected power -> lower eps -> lower Re_lambda and HIGHER
+# k_max*eta. So tau1 at the relam90 sigma2 will land BELOW Re_lambda 86 (resolution
+# safe). The label 'Re~86' is therefore NOT guaranteed -- the regime variable is tau,
+# Re floats and is measured (this is the honest 'regime' framing, not a clean Re axis).
+#
+# CALIBRATED 2026-06-25 (calibrate_ou.py, warm-start scalar_sc1 t=230, eps~sigma2^0.90):
+# sigma2=0.10 -> predicted stationary eps=0.0936 -> k_max*eta~1.55 (Class I).
+#
+# RECALIBRATED 2026-06-29 (empirical 5-seed production run): the warm-start prediction
+# was WRONG. sigma2=0.10 overshot to Re_lambda~85 (seeds measured 83.2-86.7) with
+# SYSTEMATIC K_drift_last5TL > 5% (3.98/9.20/6.61/7.09/short...) -> 1 ACCEPT / 4 REJECT
+# (80% reject, vs kf3's 9/10 at sigma2=0.0725). Root cause: at this nu the short-tau
+# config is NOT stationary enough at eps~0.094; the energy keeps drifting in the last
+# 5 T_L. FIX: drop sigma2 0.10 -> 0.0725 (== the PROVEN value for tau2/relam90 and kf3,
+# both stationary). Lowers injected power -> lower eps -> Re back to the ~74-80 comfort
+# band + higher k_max*eta (safer Class I), same as kf3's 9/10 behaviour. This is a
+# CALIBRATION change (forcing amplitude), NOT an acceptance-threshold relaxation.
+name: ou_robust_tau1_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 1.0        # tau-axis SHORT: half the relam90 correlation time
+    ou_sigma2: 0.0725  # RECALIBRATED 2026-06-29: was 0.10 -> Re~85 + 80% K_drift reject; 0.0725 = proven tau2/kf3 value (stationary, Re~74-80)
+    ou_seed: 1234

@@ -1,0 +1,15 @@
+{
+  "model": "tfno",
+  "task": "pressure",
+  "case": "ou_robust_kf3_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/tfno__pressure__ou_robust_kf3_256_fp64/best.pt",
+  "nRMSE_mean": 0.9658835600404179,
+  "nRMSE_std": 0.017175927307174457,
+  "fRMSE_high_mean": 0.21506922735887415,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 8.338213088465672
+}

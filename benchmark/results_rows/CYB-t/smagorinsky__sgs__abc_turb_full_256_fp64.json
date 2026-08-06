@@ -1,0 +1,17 @@
+{
+  "model": "smagorinsky",
+  "task": "sgs",
+  "case": "abc_turb_full_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.9992291237793717,
+  "nRMSE_std": 0.000569219444361165,
+  "fRMSE_high_mean": 0.0001154914949153203,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.043148469408134035,
+  "sgs_Pi_mean": 0.0002323437585765336,
+  "sgs_backscatter_frac_mean": 0.0
+}

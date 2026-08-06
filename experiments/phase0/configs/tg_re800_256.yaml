@@ -1,0 +1,15 @@
+name: tg_re800_256
+ic: taylor_green
+t_end: 20.0
+log_every_steps: 1
+spectrum_every_steps: 500
+solver:
+  N: 256
+  nu: 0.00125        # Re = 800
+  dtype: fp32
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

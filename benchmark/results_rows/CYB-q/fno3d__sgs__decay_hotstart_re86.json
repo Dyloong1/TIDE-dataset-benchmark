@@ -1,0 +1,17 @@
+{
+  "model": "fno3d",
+  "task": "sgs",
+  "case": "decay_hotstart_re86",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__sgs__decay_hotstart_re86/best.pt",
+  "nRMSE_mean": null,
+  "nRMSE_std": null,
+  "fRMSE_high_mean": 0.01798014503483679,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.5099083711119259,
+  "sgs_Pi_mean": 8.360134508585165e-05,
+  "sgs_backscatter_frac_mean": 0.4853203401846044
+}

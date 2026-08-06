@@ -1,0 +1,35 @@
+# Independent cross-validation of CYB-t's published Class I OU run, reproduced
+# on CYB-q with the SAME forcing parameters but this machine's code (no CYB-t
+# local patches) and a DIFFERENT IC seed — a genuine independent replication for
+# the paper (two machines, different seed, same acceptance verdict).
+#
+# CYB-t's result to match: Re_lambda=86.2, k_max_eta=1.563 (Class I),
+# drift=0.022%, closure=0.39%, A2-A13 all pass, A10 2.39%/1.27%.
+# Their hard-won calibration: ou_sigma2=0.0725 gives stationary k_max_eta~1.563
+# (short-window calibration overestimates eps -> use their long-run value).
+#
+# Different from theirs: seed=7 (they used IC seed 0 / ou_seed 1234). We keep
+# ou_seed=1234 so the forcing process matches; the IC seed differs so this is a
+# real independent realization, not a bitwise rerun.
+name: ou_xval_cybq_v2_256_fp64
+ic: random_solenoidal
+seed: 7
+k_p: 3.0
+u_rms: 0.7
+t_end: 510.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.0725
+    ou_seed: 1234

@@ -1,0 +1,26 @@
+# ABC turbulization v2 — the FIRST abc_re600 run failed (pure ABC is an exact NS
+# eigenmode, sat on the fixed point, no cascade). Fix (Podvigina-Pouquet 1994):
+# seed the unstable manifold with a 8% broadband perturbation + unequal A:B:C to
+# break symmetry + Re=1/nu~143 (well above the ~13 instability threshold). nu=0.007
+# keeps the breakdown eps_peak within the 256^3 Class-I budget (eps_peak<=nu^3*1.03e7
+# ~3.5). Expect modest Re_lambda~15-30 maximally-helical decaying turbulence.
+name: abc_turb_full_256_fp64
+ic: abc_flow
+seed: 0
+abc_A: 1.0
+abc_B: 0.7
+abc_C: 0.43
+abc_perturb: 0.08
+t_end: 50.0
+log_every_steps: 1
+spectrum_every_steps: 25
+solver:
+  N: 256
+  nu: 0.007
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

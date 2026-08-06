@@ -1,0 +1,18 @@
+{
+  "model": "ufno",
+  "task": "superres",
+  "case": "rotating_ro0p2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints/bench_q/ufno__superres__rotating_ro0p2_256_fp64/best.pt",
+  "nRMSE_mean": 0.3450340596484203,
+  "nRMSE_std": 0.06348917936439248,
+  "fRMSE_high_mean": 6.649298583759981,
+  "enstrophy_ratio_mean": 2.2465977879131542,
+  "spectrum_L2_mean": 0.19433310248103797,
+  "freq_drift_mean": 0.16653342201721436,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 3786.170960669424,
+  "fRMSE_mid_mean": 90.99071996352252,
+  "vorticity_flatness_mean": 7.968546512080174,
+  "vorticity_tail_frac_mean": 0.016064444008995506
+}

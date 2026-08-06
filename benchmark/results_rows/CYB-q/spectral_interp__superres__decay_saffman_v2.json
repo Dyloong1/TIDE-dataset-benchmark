@@ -1,0 +1,18 @@
+{
+  "model": "spectral_interp",
+  "task": "superres",
+  "case": "decay_saffman_v2",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.23462139522912456,
+  "nRMSE_std": 0.08456585549928367,
+  "fRMSE_high_mean": 0.3185497167355874,
+  "enstrophy_ratio_mean": 0.7879698159647923,
+  "spectrum_L2_mean": 0.04709801961686097,
+  "freq_drift_mean": -0.08811205255401813,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1373.350004308364,
+  "fRMSE_mid_mean": 34.51869459713207,
+  "vorticity_flatness_mean": 4.882348130731022,
+  "vorticity_tail_frac_mean": 0.011978425231634402
+}

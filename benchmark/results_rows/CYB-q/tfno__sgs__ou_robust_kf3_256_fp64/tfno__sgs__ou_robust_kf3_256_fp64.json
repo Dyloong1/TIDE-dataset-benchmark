@@ -1,0 +1,17 @@
+{
+  "model": "tfno",
+  "task": "sgs",
+  "case": "ou_robust_kf3_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/tfno__sgs__ou_robust_kf3_256_fp64/best.pt",
+  "nRMSE_mean": 0.7643542102738923,
+  "nRMSE_std": 0.008272791860050675,
+  "fRMSE_high_mean": 0.01774281884233157,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.5169137763042077,
+  "sgs_Pi_mean": 4.32943283621902e-06,
+  "sgs_backscatter_frac_mean": 0.5131324108909158
+}

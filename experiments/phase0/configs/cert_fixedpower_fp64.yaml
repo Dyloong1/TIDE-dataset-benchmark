@@ -1,0 +1,24 @@
+# 48h DNS compliance certification run (DIRECTIVE 2026-06-12).
+# Production phase-1 configuration: fixed-power band injection, fp64.
+# eps_W = 0.096 locks stationary eps == eps_W, hence eta and
+# k_max*eta = 85 * (nu^3/0.096)^(1/4) = 1.55 by construction (Class I).
+name: cert_fixedpower_fp64
+ic: random_solenoidal
+seed: 42
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0         # informational; runner uses --t-spinup/--t-sample
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: fixed_power
+    k_f: 2.0
+    eps_w: 0.096

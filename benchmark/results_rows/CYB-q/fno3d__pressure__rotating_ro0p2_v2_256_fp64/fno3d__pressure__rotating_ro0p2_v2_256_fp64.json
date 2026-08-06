@@ -1,0 +1,15 @@
+{
+  "model": "fno3d",
+  "task": "pressure",
+  "case": "rotating_ro0p2_v2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__pressure__rotating_ro0p2_v2_256_fp64/best.pt",
+  "nRMSE_mean": 0.18586483320184782,
+  "nRMSE_std": 0.0650864140503105,
+  "fRMSE_high_mean": 0.5832364734481362,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 2.0145980166453943
+}

@@ -1,0 +1,17 @@
+{
+  "model": "fno3d",
+  "task": "sgs",
+  "case": "decay_saffman_v2",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__sgs__decay_saffman_v2/best.pt",
+  "nRMSE_mean": null,
+  "nRMSE_std": null,
+  "fRMSE_high_mean": 0.01692539979429806,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.5474389113631903,
+  "sgs_Pi_mean": 0.00010554925107748667,
+  "sgs_backscatter_frac_mean": 0.515238578413047
+}

@@ -1,0 +1,18 @@
+{
+  "model": "transolver",
+  "task": "recon",
+  "case": "decay_saffman_v2",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/transolver__recon__decay_saffman_v2/best.pt",
+  "nRMSE_mean": 0.3139827692625569,
+  "nRMSE_std": 0.10814197934211735,
+  "fRMSE_high_mean": 108.68122183107862,
+  "enstrophy_ratio_mean": 2.7940391021616318,
+  "spectrum_L2_mean": 0.10929651755620451,
+  "freq_drift_mean": 0.09027633582260094,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1743.881400314032,
+  "fRMSE_mid_mean": 187.56427630256204,
+  "vorticity_flatness_mean": 6.232982373705097,
+  "vorticity_tail_frac_mean": 0.01685625197840672
+}

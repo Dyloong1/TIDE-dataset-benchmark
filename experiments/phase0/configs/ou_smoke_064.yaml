@@ -1,0 +1,28 @@
+# SMOKE config (NOT a corpus config) — 64^3, short. Validates the production CHAIN
+# (run -> eval -> gate -> zarr -> freeze_norm -> manifest -> splits -> dataset_manifest)
+# end-to-end without burning 256^3 GPU time. Physics is NOT acceptance-grade at 64^3;
+# the smoke asserts the pipeline produces the right ARTIFACTS, not that they pass A/D.
+name: ou_smoke_064
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 20.0
+log_every_steps: 1
+spectrum_every_steps: 50
+solver:
+  N: 64
+  nu: 0.0134   # high nu so k_max*eta>=1.5 at 64^3 (frames pass the per-frame gate); smoke
+               # validates the CHAIN not physics — at nu=0.0066 k_max*eta=0.97 -> all frames
+               # gate-skipped (correct gate behavior, but then 0 frames to test the pipeline)
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.01
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.0725
+    ou_seed: 1234

@@ -1,0 +1,18 @@
+{
+  "model": "transolver",
+  "task": "recon",
+  "case": "helical_re86_retune2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_helical_abc\\transolver__recon__helical_re86_retune2_256_fp64\\best.pt",
+  "nRMSE_mean": 0.24950621729972317,
+  "nRMSE_std": 0.0099592981124605,
+  "fRMSE_high_mean": 114.85253427542892,
+  "enstrophy_ratio_mean": 2.480230312721402,
+  "spectrum_L2_mean": 0.04199690452101184,
+  "freq_drift_mean": 0.0693034817482911,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1739.0796903722426,
+  "fRMSE_mid_mean": 188.8702844357958,
+  "vorticity_flatness_mean": 5.97282075881958,
+  "vorticity_tail_frac_mean": 0.016094030118456074
+}

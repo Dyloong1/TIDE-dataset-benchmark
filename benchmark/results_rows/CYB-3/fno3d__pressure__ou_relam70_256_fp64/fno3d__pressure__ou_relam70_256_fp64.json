@@ -1,0 +1,15 @@
+{
+  "model": "fno3d",
+  "task": "pressure",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\fno3d__pressure__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 0.7187459971390519,
+  "nRMSE_std": 0.04573478090665353,
+  "fRMSE_high_mean": 0.38165966202231016,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 1.3293387772990208
+}

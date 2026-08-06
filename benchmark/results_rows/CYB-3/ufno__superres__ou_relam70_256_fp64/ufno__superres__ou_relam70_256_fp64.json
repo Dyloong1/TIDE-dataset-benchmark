@@ -1,0 +1,18 @@
+{
+  "model": "ufno",
+  "task": "superres",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\ufno__superres__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 0.26857688467876584,
+  "nRMSE_std": 0.01402690625840685,
+  "fRMSE_high_mean": 3.118735949198405,
+  "enstrophy_ratio_mean": 1.1788492354692197,
+  "spectrum_L2_mean": 0.20411638112044803,
+  "freq_drift_mean": 0.14315729310699538,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 2201.052832509957,
+  "fRMSE_mid_mean": 72.40156674852558,
+  "vorticity_flatness_mean": 6.600753129697313,
+  "vorticity_tail_frac_mean": 0.01527862922818053
+}

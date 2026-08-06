@@ -1,0 +1,17 @@
+# Acceptance criterion 1 is judged on this run: Re=1600 is marginally resolved
+# at 256^3 (knowledge base 2.6), so the 384^3 run is the validation anchor.
+name: tg_re1600_384
+ic: taylor_green
+t_end: 20.0
+log_every_steps: 1
+spectrum_every_steps: 500
+solver:
+  N: 384
+  nu: 0.000625       # Re = 1600
+  dtype: fp32
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

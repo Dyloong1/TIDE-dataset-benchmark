@@ -1,0 +1,39 @@
+# Rotating HIT, 256^3 fp64 — extended-physics axis 1 (Coriolis), MODERATE-rotation point.
+# Companion to rotating_ro0p2_256_fp64 (Omega=2.5 -> measured Ro=0.065, frac_2D=0.969
+# = STRONG rotation / quasi-2D). This v2 targets Ro~0.2 (moderate rotation, mixed 2D/3D)
+# so the two form a rotation AXIS: strong(0.065, near-2D) + moderate(0.2, 3D-with-rotation).
+#
+# Omega calibration (2026-07-01, from measured seed0): Ro = u'/(2 Omega L).
+# The original yaml assumed u'~1,L~1 -> Ro~0.2 at Omega=2.5, but the OU forcing
+# (u_rms=0.7, sigma2=0.0725) gives measured u'/L=0.325, so Omega=2.5 landed at Ro=0.065
+# (3x stronger than intended). To hit Ro=0.2: Omega = (u'/L)/(2*Ro) = 0.325/0.4 = 0.81.
+# Expect frac_2D well below 0.969 (mixed regime, meaningful 3D content) — the point of v2.
+#
+# Velocity regime = VALIDATED #1 (nu=0.0022, OU k_f=2, sigma2=0.0725, Class I) so small
+# scales stay resolved (rotation does not change the Kolmogorov scale; k_max*eta>=1.5 holds).
+# NOTE: dt u-CFL limited; inertial period 2pi/(2 Omega)~3.9 at Omega=0.81, well resolved.
+name: rotating_ro0p2_v2_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.0725
+    ou_seed: 1234
+rotation:
+  enabled: true
+  omega_z: 0.81

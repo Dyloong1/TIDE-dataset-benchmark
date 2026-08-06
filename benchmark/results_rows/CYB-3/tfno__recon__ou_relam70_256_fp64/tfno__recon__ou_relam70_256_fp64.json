@@ -1,0 +1,18 @@
+{
+  "model": "tfno",
+  "task": "recon",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\tfno__recon__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 0.785396626182631,
+  "nRMSE_std": 0.031158077427131663,
+  "fRMSE_high_mean": 40.73490961860208,
+  "enstrophy_ratio_mean": 14.78535685819738,
+  "spectrum_L2_mean": 0.6023170392887265,
+  "freq_drift_mean": 2.6827639504974963,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 6373.885148590686,
+  "fRMSE_mid_mean": 654.6892897661994,
+  "vorticity_flatness_mean": 5.127958166833017,
+  "vorticity_tail_frac_mean": 0.009857644053066479
+}

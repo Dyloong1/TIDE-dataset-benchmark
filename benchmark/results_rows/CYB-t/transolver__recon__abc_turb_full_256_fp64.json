@@ -1,0 +1,18 @@
+{
+  "model": "transolver",
+  "task": "recon",
+  "case": "abc_turb_full_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "C:\\Yilong\\turbgen\\checkpoints\\bench_t_helical_abc\\transolver__recon__abc_turb_full_256_fp64\\best.pt",
+  "nRMSE_mean": 0.058890613855100145,
+  "nRMSE_std": 0.0017989844549691884,
+  "fRMSE_high_mean": 59.479487176034965,
+  "enstrophy_ratio_mean": 6.985319642459645,
+  "spectrum_L2_mean": 0.009499773047590518,
+  "freq_drift_mean": 0.04676356743655953,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 545.8258619121476,
+  "fRMSE_mid_mean": 77.62145337871476,
+  "vorticity_flatness_mean": 3.214002800922768,
+  "vorticity_tail_frac_mean": 0.0067408587418350515
+}

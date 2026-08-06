@@ -1,0 +1,17 @@
+{
+  "model": "fno3d",
+  "task": "sgs",
+  "case": "rotating_ro0p2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__sgs__rotating_ro0p2_256_fp64/best.pt",
+  "nRMSE_mean": 0.8372376175487742,
+  "nRMSE_std": 0.03295796485332264,
+  "fRMSE_high_mean": 0.01614272517754751,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.4578568450376099,
+  "sgs_Pi_mean": -0.00033471794467557485,
+  "sgs_backscatter_frac_mean": 0.5811812153049544
+}

@@ -1,0 +1,18 @@
+{
+  "model": "transolver",
+  "task": "recon",
+  "case": "decay_batchelor_v2",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/transolver__recon__decay_batchelor_v2/best.pt",
+  "nRMSE_mean": 0.37200702639187083,
+  "nRMSE_std": 0.11451823083117597,
+  "fRMSE_high_mean": 86.02262953215954,
+  "enstrophy_ratio_mean": 2.21316821902406,
+  "spectrum_L2_mean": 0.15705358930954746,
+  "freq_drift_mean": 0.060772677123382246,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 1698.642125746783,
+  "fRMSE_mid_mean": 172.7451783722522,
+  "vorticity_flatness_mean": 6.279454820296344,
+  "vorticity_tail_frac_mean": 0.01704997876111199
+}

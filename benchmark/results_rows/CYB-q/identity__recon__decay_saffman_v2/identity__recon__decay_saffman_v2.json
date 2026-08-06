@@ -1,0 +1,18 @@
+{
+  "model": "identity",
+  "task": "recon",
+  "case": "decay_saffman_v2",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.9746813119626513,
+  "nRMSE_std": 3.5372051970473504e-05,
+  "fRMSE_high_mean": 417.35971039416745,
+  "enstrophy_ratio_mean": 21.73886278563855,
+  "spectrum_L2_mean": 0.9975189204309501,
+  "freq_drift_mean": 19.295087982626523,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 6945.16224341299,
+  "fRMSE_mid_mean": 462.2535780364392,
+  "vorticity_flatness_mean": 9.682833204082414,
+  "vorticity_tail_frac_mean": 0.019057304251427744
+}

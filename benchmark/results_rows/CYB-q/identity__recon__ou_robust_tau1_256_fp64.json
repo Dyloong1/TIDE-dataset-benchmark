@@ -1,0 +1,18 @@
+{
+  "model": "identity",
+  "task": "recon",
+  "case": "ou_robust_tau1_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.974679196582121,
+  "nRMSE_std": 3.223411594604337e-05,
+  "fRMSE_high_mean": 435.5059569115732,
+  "enstrophy_ratio_mean": 16.17812012691124,
+  "spectrum_L2_mean": 0.9975152097496331,
+  "freq_drift_mean": 22.89568852443321,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 7498.768669577206,
+  "fRMSE_mid_mean": 495.1967779421339,
+  "vorticity_flatness_mean": 9.997731694988175,
+  "vorticity_tail_frac_mean": 0.01923736754585715
+}

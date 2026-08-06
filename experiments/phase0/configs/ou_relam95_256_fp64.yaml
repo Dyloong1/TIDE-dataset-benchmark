@@ -1,0 +1,36 @@
+# Re_lambda~95 intermediate Class I point — fills the 86->111 gap on the Re axis
+# (overnight supplement A, 2026-06-21). Based on ou_relam90 (nu=0.0022, Re~86,
+# k_maxeta=1.561 critical). Lower nu 0.0022->0.0019 to push Re~95; lower forcing
+# power sigma2 0.0725->0.055 to pull eta back up (k_maxeta ~ (nu^3/eps)^1/4, so
+# higher Re from lower nu fights k_maxeta — must drop eps to stay Class I).
+# WHETHER Re~95 AND Class I are simultaneously achievable on 256^3 is the open
+# empirical question this probes. sigma2 is a knob, not a target: probe decides it.
+#
+# ==> BOUNDARY-PROBE CONFIG (NOT a corpus config). The Re~95-100 sigma2 scan
+#     (0.055/0.07/0.085/0.10) established the NEGATIVE RESULT: on 256^3, Re~95-100
+#     and Class I (k_maxeta>=1.5) are NOT simultaneously achievable — the Re axis
+#     Class I ceiling is ~86-90 (see results/OVERNIGHT_SUPPLEMENT_SUMMARY.md,
+#     experiment A). sigma2 below is reset to the probe baseline 0.055; this file
+#     is kept only to reproduce the boundary probe, it does NOT enter the corpus.
+name: ou_relam95_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0019
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.055   # probe baseline (scan covered 0.055/0.07/0.085/0.10 -> all fail Class I @ Re~95)
+    ou_seed: 1234

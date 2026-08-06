@@ -1,0 +1,35 @@
+# Route 2 deterministic k_f=4 WITH large-scale soft cap (CYB-q, 2026-06-13).
+# Diagnostic fix for the k=1 runaway that destabilized plain k_f=4 at t~225:
+# k=1 (largest box scale) accumulates energy under fixed-power injection with no
+# larger scale to cascade to; the gain compounds it until the cascade dies
+# (K blows up 0.45->12.8, eps drops). See turbgen-kf4-acceptance-risk-audit.
+#
+# fixed_power_damped = normal fixed_power injection + a soft energy ceiling on
+# shells |k| < k_damp. The cap engages ONLY above e_cap_factor x the healthy
+# low-shell energy, so the normal stationary state (and steady eps == eps_w,
+# hence k_max*eta = 1.55 Class I) is preserved; it bleeds only runaway excess.
+#
+# k_damp=2.0 -> caps the k=1 shell only (the runaway one). e_cap_factor=1.5 ->
+# 50% headroom above the healthy k=1 energy before the cap engages.
+name: det_kf4_damped_256_fp64
+ic: random_solenoidal
+seed: 42
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: fixed_power_damped
+    k_f: 4.0
+    eps_w: 0.096
+    k_damp: 2.0
+    e_cap_factor: 1.5

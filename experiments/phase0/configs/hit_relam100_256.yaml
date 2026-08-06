@@ -1,0 +1,35 @@
+# Forced HIT, target Re_lambda ~ 100. nu initial value from knowledge base 2.4
+# (calibrated via --calibrate runs; final value recorded in results meta).
+name: hit_relam100_256
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 60.0          # informational; runner uses --t-spinup/--t-sample
+log_every_steps: 1
+spectrum_every_steps: 100
+# Calibration (2026-06-10): nu=2.7e-3 -> Re_lam=85.4 (kmax*eta=1.84);
+# nu=1.97e-3 -> Re_lam=96.1 (kmax*eta=1.42 — violates criterion 3!).
+# At 256^3 the measured trade-off caps Re_lambda at ~92 when kmax*eta>=1.5.
+# Final choice nu=2.2e-3: Re_lam~91 ("~100" tier), kmax*eta~1.54 with margin.
+# The KB 2.4 nu table is optimistic; tension flagged for phase-1 corpus design.
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp32
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  # Forcing switched to the deterministic energy-preserving scheme (KB 2.2.2,
+  # JHTDB-style): the explicit band-limited negative-damping term over-injects
+  # once c*dt = eps_w*dt/2E_f is non-negligible (runaway observed at t>70;
+  # see results/hit_relam100_256_negdamp_runaway/). Phase-1 fix for negative
+  # damping: inject Delta-E = eps_w*dt as an exact post-step band rescaling.
+  # E_f0 calibration: 0.40 (from healthy negdamp band energy) equilibrated at
+  # eps~0.15 -> kmax*eta~1.39 (criterion-3 fail). eps ~ E_f0^(3/2) gives
+  # E_f0=0.30 for eps~0.10, kmax*eta~1.54.
+  forcing:
+    type: energy_preserving
+    k_f: 2.0
+    E_f0: 0.30

@@ -1,0 +1,18 @@
+{
+  "model": "identity",
+  "task": "recon",
+  "case": "decay_hotstart_re86",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.9746880776741925,
+  "nRMSE_std": 3.597813361667513e-05,
+  "fRMSE_high_mean": 372.06543716729857,
+  "enstrophy_ratio_mean": 11.035698591494093,
+  "spectrum_L2_mean": 0.9975219883170783,
+  "freq_drift_mean": 17.688551341786106,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 6349.896063112745,
+  "fRMSE_mid_mean": 427.87779505112593,
+  "vorticity_flatness_mean": 9.415395474901386,
+  "vorticity_tail_frac_mean": 0.01873318821776147
+}

@@ -1,0 +1,28 @@
+# OU forcing band k_f=4 @ Re86 — forcing-band axis (overnight supplement B,
+# 2026-06-21). Based on ou_robust_kf3 (OU k_f=3, GREEN). Only change k_f 3->4.
+# Deterministic k_f=4 (det_kf4) blows up by ~30 T_L (spectral pile-up); does OU's
+# random phase immunize k_f=4 too? If stable -> instability is a deterministic-
+# forcing property, not k_f itself; forcing-band axis extends to {2,3,4}. If it
+# also destabilizes -> a 5th negative-result data point. Probe decides; A14 on.
+name: ou_robust_kf4_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 4.0
+    ou_tau: 2.0
+    ou_sigma2: 0.0725
+    ou_seed: 1234

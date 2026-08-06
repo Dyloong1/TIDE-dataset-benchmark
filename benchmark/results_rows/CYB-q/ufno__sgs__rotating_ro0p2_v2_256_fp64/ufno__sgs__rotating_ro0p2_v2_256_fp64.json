@@ -1,0 +1,17 @@
+{
+  "model": "ufno",
+  "task": "sgs",
+  "case": "rotating_ro0p2_v2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints/bench_q/ufno__sgs__rotating_ro0p2_v2_256_fp64/best.pt",
+  "nRMSE_mean": 1.5564482632805319,
+  "nRMSE_std": 0.5050301429141961,
+  "fRMSE_high_mean": 0.17411786522351058,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "sgs_tau_corr_mean": 0.15292925124659257,
+  "sgs_Pi_mean": 0.005085867996254534,
+  "sgs_backscatter_frac_mean": 0.484212762000514
+}

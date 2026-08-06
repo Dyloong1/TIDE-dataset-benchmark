@@ -1,0 +1,18 @@
+{
+  "model": "identity",
+  "task": "recon",
+  "case": "helical_re86_retune2_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": null,
+  "nRMSE_mean": 0.9746833911129072,
+  "nRMSE_std": 3.186041202375036e-05,
+  "fRMSE_high_mean": 435.57559024586396,
+  "enstrophy_ratio_mean": 17.744808346617457,
+  "spectrum_L2_mean": 0.9975150145736396,
+  "freq_drift_mean": 24.45307264141008,
+  "physical_space_metrics": true,
+  "fRMSE_low_mean": 7698.850796568628,
+  "fRMSE_mid_mean": 498.28360583735446,
+  "vorticity_flatness_mean": 9.603892906039368,
+  "vorticity_tail_frac_mean": 0.018826893731659532
+}

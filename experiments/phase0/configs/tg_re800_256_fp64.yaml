@@ -1,0 +1,20 @@
+# Taylor-Green vortex Re=800, 256^3 fp64. Canonical deterministic IC.
+# Purpose: solver validation on a classic flow with literature reference +
+# demonstrate that an EXTREME non-random IC (deterministic, single-mode, highly
+# symmetric) is cleanly DNS-able on 256^3 at Class I. Re=800 chosen so peak-
+# dissipation k_max*eta>=1.5 holds on 256^3 (Re=1600 only reaches Class II here).
+name: tg_re800_256_fp64
+ic: taylor_green
+t_end: 20.0
+log_every_steps: 1
+spectrum_every_steps: 200
+solver:
+  N: 256
+  nu: 0.00125        # Re = 1/nu = 800
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

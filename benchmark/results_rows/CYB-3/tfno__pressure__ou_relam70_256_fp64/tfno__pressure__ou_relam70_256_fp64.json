@@ -1,0 +1,15 @@
+{
+  "model": "tfno",
+  "task": "pressure",
+  "case": "ou_relam70_256_fp64",
+  "n_test_samples": 51,
+  "ckpt": "checkpoints\\bench_3\\tfno__pressure__ou_relam70_256_fp64\\best.pt",
+  "nRMSE_mean": 0.97283029088787,
+  "nRMSE_std": 0.02899987298861638,
+  "fRMSE_high_mean": 0.20160218868769852,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 32.96804499158672
+}

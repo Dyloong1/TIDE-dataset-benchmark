@@ -1,0 +1,32 @@
+# Eswaran-Pope stochastic (OU) forcing -- KDD Re-axis LOW point (Re_lambda ~ 50).
+# Random-phase low-band driving: no deterministic attractor, so no relaminarization.
+# This is the clean single-variable Re axis: k_f=2, tau=2 fixed (== relam70/relam90),
+# ONLY nu changed. nu raised to ~0.0046 (~1.4x relam70's 0.0033) to drop Re_lambda 70->50.
+# Lower Re -> larger eta -> LARGER k_max*eta (resolution gets EASIER, A1/A2 safe).
+# Acceptance RISK at low Re is A5 (L_box/L >= 4): lower nu at fixed k_f=2 grows the
+# integral scale L -> L_box/L shrinks toward the 4.0 floor. MUST check A5 in calibration.
+#
+# At fixed sigma2 the stationary eps (hence Re_lambda and k_max*eta) floats; sigma2 must
+# be nudged so the equilibrated state lands at the target Re_lambda~50 with k_max*eta>=1.5.
+name: ou_relam50_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0046
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0        # ~ one large-eddy turnover time T_L (same as relam70/90)
+    ou_sigma2: 0.0555    # CALIBRATED 2026-06-25: eps=0.066, Re_lambda=54.8, k_maxeta=2.96, A5 L_box/L=5.35 (all A pass exc A10 single-real -> 8-seed pool); CYB-t
+    ou_seed: 1234

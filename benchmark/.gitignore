@@ -1,0 +1,5 @@
+benchmark/**/__pycache__/
+benchmark/**/*.pyc
+benchmark/checkpoints/
+benchmark/results/
+benchmark/logs/

@@ -1,0 +1,23 @@
+# Free-decay Saffman/Batchelor systematization. The ONLY difference between the
+# p=2 and p=4 runs is ic_spectrum_power (low-k slope) -> a clean Saffman vs
+# Batchelor decay-law comparison. Tuned so the INITIAL state is resolved
+# (k_max_eta_0 >= 1.5): u_rms=0.8, k_p=3, nu=0.0022. forcing=none.
+name: decay_batchelor_v2
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.8
+ic_spectrum_power: 4.0
+t_end: 25.0
+log_every_steps: 1
+spectrum_every_steps: 25
+solver:
+  N: 256
+  nu: 0.0022
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

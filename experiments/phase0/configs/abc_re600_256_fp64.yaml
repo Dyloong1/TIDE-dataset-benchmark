@@ -1,0 +1,26 @@
+# ABC (Arnold-Beltrami-Childress) flow, free decay, 256^3 fp64.
+# Maximally helical Beltrami IC (u parallel omega) -> dataset diversity axis:
+# high mean helicity from a STRUCTURED (not random) IC. Distinct from
+# helical_re86 (which is helically-FORCED steady HIT); this is unforced decay of
+# a deterministic helical field. nu=0.00167 (Re~600 scale) chosen conservatively
+# so the post-rollup peak dissipation keeps k_max*eta>=1.5 on 256^3; the
+# empirical short run confirms the instantaneous-minimum k_max*eta verdict.
+name: abc_re600_256_fp64
+ic: abc_flow
+seed: 0
+abc_A: 1.0
+abc_B: 1.0
+abc_C: 1.0
+t_end: 20.0
+log_every_steps: 1
+spectrum_every_steps: 25
+solver:
+  N: 256
+  nu: 0.00167
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: none

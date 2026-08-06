@@ -1,0 +1,44 @@
+# Re_lambda~95 SECOND Class-II boundary anchor (corpus entry candidate, 2026-06-22).
+#
+# Motivation (publication-readiness review R3/P1): the Re axis has Class I points at
+# Re 70 (#2) / 86 (#1) and exactly ONE Class II anchor at Re 111 (#4). The 86->111
+# gap had no recorded point — ou_relam95 was only ever run as 40 T_E warm-start
+# probes (OVERNIGHT_SUPPLEMENT_SUMMARY experiment A), which established the genuine
+# Re-vs-k_maxeta tradeoff but recorded NO production config. The probe curve at
+# nu=0.0019 showed sigma2=0.10 -> Re_lambda=95.8, k_maxeta=1.345 (Class II).
+#
+# This config runs that Re~95 point as a FULL production trajectory (>=240 T_E) to
+# record it as a SECOND Class II boundary anchor alongside #4 — densifying the
+# 256^3 Re-resolution boundary. Class II means: spectrum + low-order stats + D-group
+# are usable; gradient/high-order statistics are N/A (under-resolved, like #4).
+# This is an HONEST Class II anchor, NOT an attempt to force Class I (the physical
+# Re-vs-k_maxeta tradeoff is real; thresholds are NOT relaxed).
+#
+# PROVENANCE NOTE: the Re~95.8/k_maxeta~1.345 figures come from a 40 T_E WARM-START
+# probe. This config is a COLD-START 470 T_E production run, so the stationary eps
+# (hence Re, k_maxeta) may settle slightly differently. The recorded class/Re is
+# whatever eval_dns_standard measures on the full run — NOT the probe numbers.
+# Record honestly at the measured class (II expected; if it lands Class I, record
+# as a Class I point instead — let the judge decide).
+name: ou_relam95_classII_256_fp64
+ic: random_solenoidal
+seed: 0
+k_p: 3.0
+u_rms: 0.7
+t_end: 500.0
+log_every_steps: 1
+spectrum_every_steps: 100
+solver:
+  N: 256
+  nu: 0.0019
+  dtype: fp64
+  device: cuda
+  scheme: rk3
+  cfl: 0.4
+  dt_max: 0.005
+  forcing:
+    type: stochastic_ou
+    k_f: 2.0
+    ou_tau: 2.0
+    ou_sigma2: 0.10    # probe: -> Re_lambda~95.8, k_maxeta~1.345 (Class II target)
+    ou_seed: 1234

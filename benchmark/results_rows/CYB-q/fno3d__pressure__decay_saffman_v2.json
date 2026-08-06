@@ -1,0 +1,15 @@
+{
+  "model": "fno3d",
+  "task": "pressure",
+  "case": "decay_saffman_v2",
+  "n_test_samples": 51,
+  "ckpt": "/home/ydai17/turbulence/checkpoints/bench_q/fno3d__pressure__decay_saffman_v2/best.pt",
+  "nRMSE_mean": 1.0003402910449288,
+  "nRMSE_std": 0.0006162223182607114,
+  "fRMSE_high_mean": 0.07471308280147758,
+  "enstrophy_ratio_mean": null,
+  "spectrum_L2_mean": null,
+  "freq_drift_mean": null,
+  "physical_space_metrics": true,
+  "poisson_residual_mean": 1.001870678920372
+}
