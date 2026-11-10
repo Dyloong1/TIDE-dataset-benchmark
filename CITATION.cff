@@ -22,12 +22,9 @@ identifiers:
     value: 10.5281/zenodo.21589489
     description: "Citable record: datasheet, code snapshot, split manifest"
 preferred-citation:
-  type: conference-paper
+  type: article
   title: "TIDE: A Physically Diverse 3D Turbulence Benchmark Dataset for Advancing Scientific Machine Learning"
-  year: 2027
-  conference:
-    name: "33rd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2027), Datasets and Benchmarks Track"
-  collection-title: "Proceedings of the 33rd ACM SIGKDD Conference on Knowledge Discovery and Data Mining"
+  year: 2026
   url: "https://arxiv.org/abs/2608.04222"
   identifiers:
     - type: other
