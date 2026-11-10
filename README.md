@@ -15,6 +15,9 @@
   </p>
 
 <p align="center">
+  <a href="https://kdd2027.kdd.org/" target="_blank">
+    <img src="https://img.shields.io/badge/KDD%202027-Datasets%20%26%20Benchmarks-8B0000">
+  </a>
   <a href="https://arxiv.org/abs/2608.04222" target="_blank">
     <img src="https://img.shields.io/badge/arXiv-2608.04222-red">
   </a>
@@ -33,6 +36,10 @@
 </p>
 
 
+
+## 🔥 News
+
+- **[2026-11]** 🎉 TIDE has been accepted at **KDD 2027 (Datasets and Benchmarks Track)**!
 
 ## 🌀 What is TIDE?
 
@@ -56,13 +63,11 @@ If you find this repository or our paper useful, please consider **starring**
 the repository and **citing** the paper:
 
 ```bibtex
-@misc{dai2026tide,
+@inproceedings{dai2027tide,
   title={TIDE: A Physically Diverse 3D Turbulence Benchmark Dataset for Advancing Scientific Machine Learning},
   author={Yilong Dai and Yiming Sun and Yiheng Chen and Shengyu Chen and Peyman Givi and Xiaowei Jia and Runlong Yu},
-  year={2026},
-  eprint={2608.04222},
-  archivePrefix={arXiv},
-  primaryClass={physics.flu-dyn},
+  booktitle={Proceedings of the 33rd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), Datasets and Benchmarks Track},
+  year={2027},
   url={https://arxiv.org/abs/2608.04222},
 }
 ```
@@ -404,13 +409,11 @@ configuration).
 ## 📜 Citation
 
 ```bibtex
-@misc{dai2026tide,
+@inproceedings{dai2027tide,
   title={TIDE: A Physically Diverse 3D Turbulence Benchmark Dataset for Advancing Scientific Machine Learning},
   author={Yilong Dai and Yiming Sun and Yiheng Chen and Shengyu Chen and Peyman Givi and Xiaowei Jia and Runlong Yu},
-  year={2026},
-  eprint={2608.04222},
-  archivePrefix={arXiv},
-  primaryClass={physics.flu-dyn},
+  booktitle={Proceedings of the 33rd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), Datasets and Benchmarks Track},
+  year={2027},
   url={https://arxiv.org/abs/2608.04222},
 }
 ```
